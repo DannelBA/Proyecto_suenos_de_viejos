@@ -139,7 +139,11 @@
             
             <button type="submit" class="btn">Registrarse</button>
         </form>
+    
+        <a href="login.jsp" class="link">¿Ya tienes cuenta? Inicia sesión</a>
+    
     </div>
-
+    
+    
 </body>
 </html>
