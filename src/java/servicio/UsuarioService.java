@@ -33,9 +33,10 @@ public class UsuarioService {
         usuario.setTelefono(telefono);
         
         int cod_usuario = usuario.save(usuario);
-        
-        Acceso acceso = new Acceso(cod_usuario, correo, contraseña);
-        acceso.save(acceso);
+        if(cod_usuario != -1) {
+            Acceso acceso = new Acceso(cod_usuario, correo, contraseña);
+            acceso.save(acceso);
+        }
         
     }
 }
