@@ -9,9 +9,7 @@ import modelo.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.LinkedList;
-import java.util.List;
+
 /**
  *
  * @author barro

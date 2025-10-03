@@ -103,16 +103,21 @@
                 Fecha Nacimiento: <input type="date" name="fecha_nacimiento" required><br><br>
             </div>
             
+            <div class="form-group">
+                <select name="genero" required>
+                    <option value="">Seleccione su genero</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+                <br><br>
+            </div>
+            
             <div>
                 <select name="idtipotelefono" required>
                     <option value="">Seleccione tipo telefono</option>
                     <option value="1">Fijo</option>
                     <option value="2">Celular</option>
                 </select>
-            </div>
-            
-            <div class="form-group">
-                Genero: <input type="text" name="genero" required>
             </div>
             
             <div class="form-group">
