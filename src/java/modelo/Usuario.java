@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import persistencia.UsuarioRepositorio;
+
 import java.util.Date;
 
 /**
@@ -22,9 +24,12 @@ public class Usuario {
     private Date fechaNacimientoUsuario;
     private int idTipoTelefono;
     private String telefono;
+    
+    private UsuarioRepositorio ur;
 
     // Constructor vacío
     public Usuario() {
+        ur = new UsuarioRepositorio();
     }
 
     // Constructor con parámetros
@@ -41,6 +46,8 @@ public class Usuario {
         this.fechaNacimientoUsuario = fechaNacimientoUsuario;
         this.idTipoTelefono = idTipoTelefono;
         this.telefono = telefono;
+        
+        ur = new UsuarioRepositorio();
     }
 
     // Getters y Setters
@@ -139,5 +146,9 @@ public class Usuario {
                 ", idTipoTelefono=" + idTipoTelefono +
                 ", telefono='" + telefono + '\'' +
                 '}';
+    }
+
+    public int save(Usuario us) {
+        return ur.saveUsuario(us);
     }
 }

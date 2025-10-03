@@ -6,7 +6,12 @@
 	 version="6.0">
     
     <servlet>
-        <servlet-name>usuario</servlet-name>
-        <servlet-class>servicio.usuarioService</servlet-class>
+        <servlet-name>Usuario</servlet-name>
+        <servlet-class>presentacion.usuarioControl</servlet-class>
     </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Usuario</servlet-name>
+        <url-pattern>/Usuario</url-pattern>
+    </servlet-mapping>
 </web-app>

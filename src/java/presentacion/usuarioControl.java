@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import servicio.UsuarioService;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -18,6 +20,8 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "usuarioControl", urlPatterns = {"/usuarioControl"})
 public class usuarioControl extends HttpServlet {
+    
+    private UsuarioService us = new UsuarioService();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,7 +38,11 @@ public class usuarioControl extends HttpServlet {
         int id_tipo_telefono = Integer.parseInt(request.getParameter("idtipotelefono"));
         String telefono = request.getParameter("telefono");
         String correo = request.getParameter("correo");
-        String contraseña = request.getParameter("contraseña");
+        String contraseña = request.getParameter("contrasena");
+        
+        
+        us.saveUsuario(id_tipo_documento, documento, nombre, apellidos, genero, idRol, fecha_nacimiento, id_tipo_telefono, telefono, correo, contraseña);
+        
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

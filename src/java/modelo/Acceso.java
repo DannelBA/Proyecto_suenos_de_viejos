@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import persistencia.AccesoRepositorio;
+
 /**
  *
  * @author barro
@@ -13,9 +15,12 @@ public class Acceso {
     private int idUsuario;
     private String correo;
     private String contrasena;
+    
+    private AccesoRepositorio ac;
 
     // Constructor vacío
     public Acceso() {
+        ac = new AccesoRepositorio();
     }
 
     // Constructor con parámetros
@@ -23,6 +28,8 @@ public class Acceso {
         this.idUsuario = idUsuario;
         this.correo = correo;
         this.contrasena = contrasena;
+        
+        ac = new AccesoRepositorio();
     }
 
     // Getters y Setters
@@ -58,5 +65,9 @@ public class Acceso {
                 ", correo='" + correo + '\'' +
                 ", contrasena='" + contrasena + '\'' +
                 '}';
+    }
+
+    public void save(Acceso acceso) {
+        ac.saveAcceso(acceso);
     }
 }
