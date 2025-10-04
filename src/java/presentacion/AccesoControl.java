@@ -21,13 +21,17 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(name = "AutenticacionControl", urlPatterns = {"/AutenticacionControl"})
 public class AccesoControl extends HttpServlet {
 
-    AccesoService ac = new AccesoService();
+    AccesoService as = new AccesoService();
     
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String correo = request.getParameter("correo");
         String contraseña = request.getParameter("contraseña");
         
-       ac.autenticar(correo, contraseña);
+       int cod_usuario = as.autenticar(correo, contraseña);
+       
+       if(cod_usuario != -1) {
+           //Aqui se manda hacia la pagina inicial
+       }
     }
     
     /**

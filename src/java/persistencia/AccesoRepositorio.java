@@ -53,36 +53,35 @@ public class AccesoRepositorio {
         }
     }   
     
-    public Acceso obtenerAcceso(String correo, String contrasena) {
-    String sql = "SELECT id_usuario, correo, contraseña FROM accesos WHERE correo = ? AND contraseña = ?";
-    Acceso acceso = null;
+    public Acceso obtenerAcceso(String correo) {
+        String sql = "SELECT id_usuario, correo, contraseña FROM accesos WHERE correo = ?";
+        Acceso acceso = null;
 
-    try {
-        Bd x = new Bd(DB_URL, DB_USER, DB_PASSWORD);
-        Connection conn = x.getConn();
+        try {
+            Bd x = new Bd(DB_URL, DB_USER, DB_PASSWORD);
+            Connection conn = x.getConn();
 
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, correo);
-        stmt.setString(2, contrasena);
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, correo);
 
-        ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
 
-        if (rs.next()) {
-            acceso = new Acceso();
-            acceso.setIdUsuario(rs.getInt("id_usuario"));
-            acceso.setCorreo(rs.getString("correo"));
-            acceso.setContrasena(rs.getString("contraseña"));
-        }
+            if (rs.next()) {
+                acceso = new Acceso();
+                acceso.setIdUsuario(rs.getInt("id_usuario"));
+                acceso.setCorreo(rs.getString("correo"));
+                acceso.setContrasena(rs.getString("contraseña"));
+            }
 
-        rs.close();
-        stmt.close();
-        conn.close();
+            rs.close();
+            stmt.close();
+            conn.close();
 
-    } catch (Exception e) {
-        e.printStackTrace();
-        System.out.println("Error al obtener el acceso: " + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al obtener el acceso: " + e.getMessage());
+        }   
+
+        return acceso;
     }
-
-    return acceso;
-}
 }

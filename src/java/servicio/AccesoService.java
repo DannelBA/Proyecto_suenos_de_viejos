@@ -22,7 +22,13 @@ public class AccesoService {
         
     }
 
-    public void autenticar(String correo, String contraseña) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int autenticar(String correo, String contraseña) {
+        Acceso a = ap.obtenerAcceso(correo);
+        
+        if(a != null && a.getContrasena().equals(contraseña)) {
+            return a.getIdUsuario();
+        }
+        
+        return -1;
     }
 }

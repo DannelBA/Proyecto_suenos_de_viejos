@@ -8,4 +8,13 @@
         <servlet-name>Usuario</servlet-name>
         <url-pattern>/Usuario</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>presentacion.AccesoControl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
 </web-app>
