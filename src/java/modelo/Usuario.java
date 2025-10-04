@@ -147,8 +147,4 @@ public class Usuario {
                 ", telefono='" + telefono + '\'' +
                 '}';
     }
-
-    public int save(Usuario us) {
-        return ur.saveUsuario(us);
-    }
 }

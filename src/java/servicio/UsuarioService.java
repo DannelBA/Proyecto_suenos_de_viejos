@@ -7,13 +7,15 @@ package servicio;
 import java.util.Date;
 import modelo.Usuario;
 import modelo.Acceso;
+import persistencia.UsuarioRepositorio;
 
 /**
  *
  * @author barro
  */
 public class UsuarioService {
-
+    private AccesoService as = new AccesoService();
+    private UsuarioRepositorio ur = new UsuarioRepositorio();
     public UsuarioService() {
         
     }
@@ -32,10 +34,9 @@ public class UsuarioService {
         usuario.setIdTipoTelefono(id_tipo_telefono);
         usuario.setTelefono(telefono);
         
-        int cod_usuario = usuario.save(usuario);
+        int cod_usuario = ur.saveUsuario(usuario);
         if(cod_usuario != -1) {
-            Acceso acceso = new Acceso(cod_usuario, correo, contraseña);
-            acceso.save(acceso);
+            as.saveAcceso(cod_usuario, correo, contraseña);
         }
         
     }

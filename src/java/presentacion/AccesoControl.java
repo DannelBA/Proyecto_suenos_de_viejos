@@ -4,7 +4,7 @@
  */
 package presentacion;
 
-import servicio.UsuarioService;
+import servicio.AccesoService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,40 +13,32 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import servicio.AccesoService;
 
 /**
  *
  * @author barro
  */
-@WebServlet(name = "usuarioControl", urlPatterns = {"/usuarioControl"})
-public class UsuarioControl extends HttpServlet {
-    
-    private UsuarioService us = new UsuarioService();
-    
+@WebServlet(name = "AutenticacionControl", urlPatterns = {"/AutenticacionControl"})
+public class AccesoControl extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        // Capturar parámetros del formulario
-        int id_tipo_documento = Integer.parseInt(request.getParameter("tipodocumento"));
-        String documento = request.getParameter("documento");
-        String nombre = request.getParameter("nombre");
-        String apellidos = request.getParameter("apellidos");
-        String genero = request.getParameter("genero");
-        int idRol = Integer.parseInt(request.getParameter("idRol"));
-        String fecha_nacimiento_str = request.getParameter("fecha_nacimiento");
-        java.sql.Date fecha_nacimiento = java.sql.Date.valueOf(fecha_nacimiento_str);
-        int id_tipo_telefono = Integer.parseInt(request.getParameter("idtipotelefono"));
-        String telefono = request.getParameter("telefono");
+    AccesoService ac = new AccesoService();
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         String correo = request.getParameter("correo");
-        String contraseña = request.getParameter("contrasena");
+        String contraseña = request.getParameter("contraseña");
         
-        
-        us.saveUsuario(id_tipo_documento, documento, nombre, apellidos, genero, idRol, fecha_nacimiento, id_tipo_telefono, telefono, correo, contraseña);
-        
+       ac.autenticar(correo, contraseña);
     }
     
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -55,10 +47,10 @@ public class UsuarioControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet usuarioControl</title>");
+            out.println("<title>Servlet AutenticacionControl</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet usuarioControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AutenticacionControl at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
