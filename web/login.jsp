@@ -6,66 +6,119 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>Iniciar Sesión</title>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(120deg, #2980b9, #8e44ad);
+      font-family: 'Segoe UI', sans-serif;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0;
+      background: linear-gradient(135deg, #74ABE2, #5563DE, #A55DEB);
+      background-size: 300% 300%;
+      animation: fondo 10s ease-in-out infinite alternate;
     }
+
+    @keyframes fondo {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
     .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 40px 35px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
       width: 350px;
-      background: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       text-align: center;
+      color: #fff;
+      animation: aparecer 1s ease forwards;
     }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     h2 {
-      margin-bottom: 20px;
-      color: #333;
+      margin-bottom: 25px;
+      color: #fff;
+      font-size: 26px;
+      letter-spacing: 1px;
     }
+
     .form-group {
-      margin-bottom: 15px;
+      margin-bottom: 18px;
       text-align: left;
     }
+
     label {
       display: block;
-      margin-bottom: 5px;
-      color: #444;
+      margin-bottom: 6px;
+      color: #f0f0f0;
+      font-weight: 500;
     }
+
     input {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.85);
+      color: #333;
+      font-size: 15px;
+      outline: none;
+      transition: all 0.3s ease;
     }
+
+    input:focus {
+      background: #fff;
+      box-shadow: 0 0 5px rgba(255,255,255,0.5);
+    }
+
     button {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin-top: 10px;
-      background: #2980b9;
       border: none;
-      color: white;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #3f87a6, #ebf8e1, #f69d3c);
+      background-size: 200% auto;
+      color: #222;
+      font-weight: 600;
       font-size: 16px;
-      border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: all 0.4s ease;
     }
+
     button:hover {
-      background: #1f6391;
+      background-position: right center;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(255,255,255,0.3);
     }
+
     .link {
-      margin-top: 15px;
-      display: block;
-      color: #2980b9;
+      margin-top: 20px;
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .link:hover {
+      color: #ebf8e1;
       text-decoration: underline;
     }
   </style>
@@ -83,7 +136,7 @@
         <input type="password" id="contraseña" name="contraseña" required>
       </div>
       <button type="submit">Entrar</button>
-      <a href="registerForm.jsp" class="link">¿No tienes cuenta? Regístrate</a>
+      <a href="home.jsp" class="link">Volver al inicio</a>
     </form>
   </div>
 </body>

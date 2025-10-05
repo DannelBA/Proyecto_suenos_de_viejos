@@ -20,7 +20,7 @@ public class UsuarioService {
         
     }
     
-    public void saveUsuario(int id_tipo_documento, String documento, String nombre, 
+    public int saveUsuario(int id_tipo_documento, String documento, String nombre, 
                             String apellidos, String genero, int idRol, Date fecha_nacimiento, 
                             int id_tipo_telefono, String telefono, String correo, String contraseña) {
         Usuario usuario = new Usuario();
@@ -37,7 +37,8 @@ public class UsuarioService {
         int cod_usuario = ur.saveUsuario(usuario);
         if(cod_usuario != -1) {
             as.saveAcceso(cod_usuario, correo, contraseña);
+            return usuario.getCodUsuario();
         }
-        
+        return -1;
     }
 }

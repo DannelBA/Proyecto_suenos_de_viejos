@@ -40,11 +40,14 @@ public class UsuarioControl extends HttpServlet {
         int id_tipo_telefono = Integer.parseInt(request.getParameter("idtipotelefono"));
         String telefono = request.getParameter("telefono");
         String correo = request.getParameter("correo");
-        String contraseña = request.getParameter("contrasena");
+        String contraseña = request.getParameter("contraseña");
         
         
-        us.saveUsuario(id_tipo_documento, documento, nombre, apellidos, genero, idRol, fecha_nacimiento, id_tipo_telefono, telefono, correo, contraseña);
-        
+        int cod_usuario = us.saveUsuario(id_tipo_documento, documento, nombre, apellidos, genero, idRol, fecha_nacimiento, id_tipo_telefono, telefono, correo, contraseña);
+        if(cod_usuario != -1) {
+            request.setAttribute("mensaje", "Usuario registrado correctamente");
+            request.getRequestDispatcher("registerFormDonador.jsp").forward(request, response);
+        }
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
